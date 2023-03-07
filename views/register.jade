@@ -1,0 +1,30 @@
+extends layout 
+
+block content 
+  .header
+    h1 REGISTRERA DIG
+  
+  .content
+    form(action='/register' method='post')
+      input(id='mail' type='text' name='mail' placeholder='Mail' required)
+      input(id='username' type='text' name='username' placeholder='Användarnamn' required)
+      input(id='password' type='password' name='password' placeholder='Lösenord' required)
+      input(id='confirm-password' type='password' name='confirmpassword' placeholder='Bekräfta lösenord' required)
+      label#password-missmatch(title='Lösenorden stämmer ej överens!') (!)
+      a(href="http://localhost:3000/login") Har du konto? Logga in direkt
+      input(type='submit' value='Registrera dig')
+      p.errorMsg= errorMsg
+
+      script.
+        var mainpassword = document.getElementById('password');
+        var confirm_password = document.getElementById('confirm-password');
+        var password_missmatch = document.getElementById('password-missmatch');
+
+        function confirmPassword(){
+          if(mainpassword.value == confirm_password.value){
+            password_missmatch.style.display = ("none");
+          } else {
+            password_missmatch.style.display = ("inline");
+          }
+        }
+        confirm_password.onkeyup = confirmPassword;

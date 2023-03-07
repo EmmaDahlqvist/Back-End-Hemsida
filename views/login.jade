@@ -1,0 +1,13 @@
+extends layout 
+
+block content
+  .header
+    h1 LOGGA IN NEDAN
+  
+  .content 
+    form(action='/login' method='post')
+      input#username(type='text' name='username' placeholder='Användarnamn' required)
+      input#password(type='password' name='password' placeholder='Lösenord' required)
+      a(href="http://localhost:3000/register") Saknar du konto? Registrera dig nu
+      input(type='submit' value='Logga in')
+      p.errorMsg= errorMsg

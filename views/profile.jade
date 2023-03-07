@@ -1,0 +1,42 @@
+extends layout 
+
+block content
+  .header
+    a(href="/")
+      h1 Pizzeria 
+    h2 Din profil: #{username}
+
+  .content
+    h2 Byt användarnamn eller lösenord
+    form(action='/profile' method='post')
+      div
+        input#mail(type='text', name="new_mail", placeholder='Ange mailadress', value=mail, required)
+        input#username(type='text' name='new_username' placeholder='Ange användarnamn', value=username, required)
+      div
+        input#password(type='password' name='new_password' placeholder='Nytt lösenord', required)
+        input#confirm_password(type='password' name='confirm_password' placeholder='Bekräfta lösenord', required)
+        label(id="password-missmatch" title='Lösenorden stämmer ej överens!') (!)
+      div 
+        input#old_password(type='password' name='old_password' placeholder='Gammalt lösenord', required)
+      div
+        input(type='submit' value='Byt')
+        br
+    p.errorMsg= errorMsg
+    p.confirm_msg= confirmMsg
+    a(href="/logout")
+      button Logga ut
+  
+  script.
+    var mainpassword = document.getElementById('password');
+    var confirm_password = document.getElementById('confirm_password');
+    var password_missmatch = document.getElementById('password-missmatch');
+
+    function confirmPassword(){
+      if(mainpassword.value == confirm_password.value){
+        password_missmatch.style.display = ("none");
+      } else {
+        password_missmatch.style.display = ("inline");
+      }
+    }
+    confirm_password.onkeyup = confirmPassword;
+    

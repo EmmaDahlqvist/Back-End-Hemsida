@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  .header
+    h1#username Välkommen till Pizzerian #{username}
+    br
+    a(href='http://localhost:3000/profile') DIN PROFIL
+    a#cart(href='http://localhost:3000/cart' style='margin: 10px') Kundvagn (#{amount})
+    a(href="/logout")
+      button() Logga ut
+  .item_container
+    for product in products
+      .item 
+        img.item_img(src=product.img)
+        h3= product.title
+        h3 #{product.price} kr
+        button(onclick=`addToCart(${JSON.stringify(product)})`) Lägg till i kundvagn
+  
+  script(src="/javascripts/cart.js")

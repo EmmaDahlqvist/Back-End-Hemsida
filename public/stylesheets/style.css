@@ -1,0 +1,133 @@
+* {
+  margin: 0;
+}
+
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.errorMsg {
+  color: red;
+  size: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+}
+
+.confirm_msg {
+  color: green;
+  size: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.center {
+  width: 300px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: auto;
+  background-color: blue;
+}
+
+.header {
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  height: 200px;
+  width: 100%;
+  background-color: #4CAF50;
+}
+
+.item_container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.item_img {
+  border: 1px solid;
+  border-radius: 20px;
+  height: 60%;
+  margin: 10px;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  padding: 50px;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: column;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  height: 200px;
+  background-color: #4CAF50;
+  margin: 50px;
+  border-radius: 5px;
+}
+
+.loginButton {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 2px;
+}
+
+input{
+  margin: 10px;
+}
+
+#password-missmatch {
+  display: none;
+  color: red;
+}
+
+.addToCart {
+  border: none;
+  background-color: beige;
+  border-radius: 5px;
+  padding: 10px 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+button {
+  margin: 10px;
+}
+
+.footer {
+  width: 100%;
+  height: 200px;
+  margin-bottom: 0;
+}

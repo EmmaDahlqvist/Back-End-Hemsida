@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  .header
+    a(href="/")
+      h1 Pizzeria
+    h2#username Din kundvagn #{username}
+    button(onclick="clearCart()") Rensa kundvagnen
+  .item_container
+    for product in result
+      .item 
+        img.item_img(src=product.img)
+        h3= product.title
+        h3 #{product.price} kr
+        button(onclick=`removeFromCart(${JSON.stringify(product)})`) Ta bort 
+
+  script(src="/javascripts/cart.js")

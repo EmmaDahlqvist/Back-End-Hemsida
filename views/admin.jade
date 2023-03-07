@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  .header
+    h1#username Admin Page : #{username}
+    br
+    a(href='http://localhost:3000/profile') DIN PROFIL
+    a(href="/logout")
+      button() Logga ut
+  .item_container
+    .item 
+      form(action='/admin' method='post')
+        input#add_img(type='text' name='add_img' placeholder='IMG URL' required)
+        input#add_title(type='text' name='add_title' placeholder='TITEL' required)
+        input#add_price(type='text' name='add_price' placeholder='PRIS' required)
+        input(type='submit' value='Lägg till')
+    for product in products
+        .item 
+          img.item_img(src=product.img)
+          h3= product.title
+          h3 #{product.price} kr
+          button(onclick=`removeProduct(${JSON.stringify(product)})`) Ta bort produkt
+  
+  script(src="/javascripts/products.js")
