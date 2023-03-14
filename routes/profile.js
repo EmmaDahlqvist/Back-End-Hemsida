@@ -15,7 +15,6 @@ router.get('/', function(req, res, next) {
   }
   
   for(const user of users){
-    console.log(user);
     if(user.username == req.session.userid){
       res.render('profile', user);
     } else {
@@ -65,12 +64,13 @@ router.post('/', function(req, res, next) {
 
     //uppdatera IDt på produkten till nya username
     results = productsInCart.filter(item => item.userId == req.session.userid);
-    for(var result in results){
-      result.userId = req.body.new_username;
-    }
 
-    //uppdatera produkten med nytt userid
-    fs.writeFileSync("products_in_cart.json", JSON.stringify(results));
+    for(var product of productsInCart){
+      if(results.includes(product)){
+        //byt userId
+        product.userId = req.body.new_username
+      }
+    }
 
     //stämmer med confirm password rutan
     if(req.body.new_password == req.body.confirm_password){
@@ -81,7 +81,10 @@ router.post('/', function(req, res, next) {
           theUser.mail = req.body.new_mail;
           theUser.password = req.body.new_password;
   
-          // uppdatera filen
+          //uppdatera products in cart med nytt userid
+          fs.writeFileSync("products_in_cart.json", JSON.stringify(productsInCart));
+
+          // uppdatera filen med ny info
           fs.writeFileSync("users.json", JSON.stringify(users));
           res.render('profile', Object.assign(theUser, {confirmMsg: "Information uppdaterad!"})) 
         } else {
